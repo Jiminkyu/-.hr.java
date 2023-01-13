@@ -12,16 +12,15 @@ public class WorkerDaoTest {
 		Worker worker2 = new Worker(2,"나",LocalDate.of(2023,6,15));
 		Worker worker3 = new Worker(3,"다",LocalDate.of(2023,6,15));
 		
-		Worker[] workers = new Worker[4];
+		Worker[] workers = new Worker[3];
 		WorkerDao workerDao = new WorkerDaoImpl(workers);
 		
 		workerDao.insertWorker(worker1);
 		workerDao.insertWorker(worker2);
 		workerDao.insertWorker(worker3);
 		
-		workerDao.deleteWorker(worker3);
 		workers = workerDao.selectWorkers();
-		
+	
 		for(Worker worker: workers) System.out.println(worker);
 	}
 }

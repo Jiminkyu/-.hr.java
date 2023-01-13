@@ -1,13 +1,12 @@
 package com.my.hr.dao;
 
 import java.time.LocalDate;
-
 import com.my.hr.domain.Worker;
 
 public class WorkerDaoImpl implements WorkerDao {
 	private int cusor;
 	private Worker[] workers;
-	private Worker worker;
+	
 	
 	public WorkerDaoImpl(Worker[] workers) {
 		this.workers = workers;
@@ -30,6 +29,6 @@ public class WorkerDaoImpl implements WorkerDao {
 	
 	@Override
 	public void deleteWorker(Worker worker) {
-		this.workers[cusor] = null;
+		this.workers[cusor++] = null;
 	}
 }
