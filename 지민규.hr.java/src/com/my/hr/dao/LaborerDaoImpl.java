@@ -5,23 +5,25 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.my.hr.dao.map.LaborerMap;
 import com.my.hr.domain.Laborer;
 import com.my.hr.domain.NoneException;
+
+import config.Configuration;
 
 public class LaborerDaoImpl implements LaborerDao {
 	private List<Laborer> laborers;
 	private int laborerIdSeq;
+	private LaborerMap laborerMap; 
 	
-	public LaborerDaoImpl(List<Laborer> laborers) {
-		this.laborers = laborers;
-		this.laborerIdSeq = 1;
+	public LaborerDaoImpl() {
+		this.laborerMap = Configuration.getMapper(LaborerMap.class);
 	}
 	
 	@Override
 	public List<Laborer> selectLaborers(){
-		return laborers;
+		return laborerMap.selectLaborers();
 	}
-	//callback 필터를통해서 무대뒤편에서 콜된다.불리언값을 리턴하게한다.
 	private Laborer selectLaborer(int laborerId) {
 		List<Laborer> list = laborers.stream()
 				.filter(laborer -> laborer.laborerId() == laborerId)
