@@ -1,4 +1,4 @@
-package config;
+package com.my.hr.config;
 
 import java.io.Reader;
 
@@ -11,10 +11,8 @@ public class Configuration {
 	
 	static {
 		try {
-			Reader reader = Resources.getResourceAsReader("config/sqlMapConfig.xml");
+			Reader reader = Resources.getResourceAsReader("com/my/hr/config/sqlMapConfig.xml");
 			sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
-//			InputStream stream = Resources.getResourceAsStream("config/sqlMapConfig.xml");
-//			sqlSessionFactory = new SqlSessionFactoryBuilder().build(stream, "hr");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
